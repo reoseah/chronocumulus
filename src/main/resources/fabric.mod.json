@@ -1,31 +1,31 @@
 {
 	"schemaVersion": 1,
-	"id": "modid",
+	"id": "chronocumulus",
 	"version": "${version}",
-	"name": "Example mod",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"name": "Chronocumulus",
+	"description": "Structures of the past meet fancy shaped clouds, souvenirs included.",
 	"authors": [
-		"Me!"
+		"Reoseah"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"homepage": "https://reoseah.github.io/chronocumulus/",
+		"sources": "https://github.com/reoseah/chronocumulus"
 	},
-	"license": "CC0-1.0",
-	"icon": "assets/modid/icon.png",
+	"license": "MIT",
+	"icon": "assets/chronocumulus/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"com.example.ExampleMod"
+			"io.github.reoseah.chronocumulus.Chronocumulus"
 		],
 		"client": [
-			"com.example.ExampleModClient"
+			"io.github.reoseah.chronocumulus.ChronocumulusClient"
 		]
 	},
 	"mixins": [
-		"modid.mixins.json",
+		"chronocumulus.mixins.json",
 		{
-			"config": "modid.client.mixins.json",
+			"config": "chronocumulus.client.mixins.json",
 			"environment": "client"
 		}
 	],
