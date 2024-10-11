@@ -18,8 +18,10 @@ public class Chronocumulus implements ModInitializer {
 	public void onInitialize() {
 		LOGGER.info("Initiating time stabilization protocol...");
 
-		Registry.register(Registries.BLOCK, Identifier.of(MOD_ID, CloudBlock.ID), CloudBlock.INSTANCE);
+		Registry.register(Registries.BLOCK, Identifier.of(MOD_ID, CloudBlock.CLOUD_ID), CloudBlock.CLOUD_BLOCK);
+		Registry.register(Registries.BLOCK, Identifier.of(MOD_ID, CloudBlock.BRICKS_ID), CloudBlock.BRICKS_BLOCK);
 
-		Registry.register(Registries.ITEM, Identifier.of(MOD_ID, CloudBlock.ID), CloudBlock.ITEM);
+		Registry.register(Registries.ITEM, Identifier.of(MOD_ID, CloudBlock.CLOUD_ID), CloudBlock.CLOUD_ITEM);
+		Registry.register(Registries.ITEM, Identifier.of(MOD_ID, CloudBlock.BRICKS_ID), CloudBlock.BRICKS_ITEM);
 	}
 }
