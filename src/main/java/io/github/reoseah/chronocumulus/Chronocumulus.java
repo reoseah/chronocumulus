@@ -1,6 +1,7 @@
 package io.github.reoseah.chronocumulus;
 
 import io.github.reoseah.chronocumulus.cloud.CloudBlock;
+import io.github.reoseah.chronocumulus.cloud.ProtrusionBlock;
 import net.fabricmc.api.ModInitializer;
 
 import net.minecraft.registry.Registries;
@@ -19,9 +20,13 @@ public class Chronocumulus implements ModInitializer {
 		LOGGER.info("Initiating time stabilization protocol...");
 
 		Registry.register(Registries.BLOCK, Identifier.of(MOD_ID, CloudBlock.CLOUD_ID), CloudBlock.CLOUD_BLOCK);
+		Registry.register(Registries.BLOCK, Identifier.of(MOD_ID, CloudBlock.SMOOTH_ID), CloudBlock.SMOOTH_BLOCK);
 		Registry.register(Registries.BLOCK, Identifier.of(MOD_ID, CloudBlock.BRICKS_ID), CloudBlock.BRICKS_BLOCK);
+		Registry.register(Registries.BLOCK, Identifier.of(MOD_ID, ProtrusionBlock.ID), ProtrusionBlock.INSTANCE);
 
 		Registry.register(Registries.ITEM, Identifier.of(MOD_ID, CloudBlock.CLOUD_ID), CloudBlock.CLOUD_ITEM);
+		Registry.register(Registries.ITEM, Identifier.of(MOD_ID, CloudBlock.SMOOTH_ID), CloudBlock.SMOOTH_ITEM);
 		Registry.register(Registries.ITEM, Identifier.of(MOD_ID, CloudBlock.BRICKS_ID), CloudBlock.BRICKS_ITEM);
+		Registry.register(Registries.ITEM, Identifier.of(MOD_ID, ProtrusionBlock.ID), ProtrusionBlock.ITEM);
 	}
 }

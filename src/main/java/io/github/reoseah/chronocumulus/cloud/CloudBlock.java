@@ -1,12 +1,17 @@
 package io.github.reoseah.chronocumulus.cloud;
 
+import io.github.reoseah.chronocumulus.Chronocumulus;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.MapColor;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.RegistryKeys;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.sound.BlockSoundGroup;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.BlockView;
 
@@ -17,9 +22,15 @@ public class CloudBlock extends Block {
     public static final Block CLOUD_BLOCK = new CloudBlock(CLOUD_SETTINGS);
     public static final Item CLOUD_ITEM = new BlockItem(CLOUD_BLOCK, new Item.Settings());
 
+    public static final String SMOOTH_ID = "smooth_cloud";
+    public static final Block SMOOTH_BLOCK = new CloudBlock(CLOUD_SETTINGS);
+    public static final Item SMOOTH_ITEM = new BlockItem(SMOOTH_BLOCK, new Item.Settings());
+
     public static final String BRICKS_ID = "cloud_bricks";
     public static final Block BRICKS_BLOCK = new CloudBlock(CLOUD_SETTINGS);
     public static final Item BRICKS_ITEM = new BlockItem(BRICKS_BLOCK, new Item.Settings());
+
+    public static final TagKey<Block> SOLID_CLOUDS = TagKey.of(RegistryKeys.BLOCK, Identifier.of(Chronocumulus.MOD_ID, "solid_clouds"));
 
     public CloudBlock(Block.Settings settings) {
         super(settings);

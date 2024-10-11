@@ -1,5 +1,7 @@
 {
   "itemGroup.chronocumulus": "Chronocumulus",
   "block.chronocumulus.cloud": "Chronocumulus Cloud",
-  "block.chronocumulus.cloud_bricks": "Chronocumulus Cloud Bricks"
+  "block.chronocumulus.smooth_cloud": "Chronocumulus Cloud Cube",
+  "block.chronocumulus.cloud_bricks": "Chronocumulus Cloud Bricks",
+  "block.chronocumulus.cloud_protrusion": "Chronocumulus Cloud Protrusion"
 }
