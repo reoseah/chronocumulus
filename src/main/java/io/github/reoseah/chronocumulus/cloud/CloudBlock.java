@@ -1,10 +1,7 @@
 package io.github.reoseah.chronocumulus.cloud;
 
 import io.github.reoseah.chronocumulus.Chronocumulus;
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.MapColor;
+import net.minecraft.block.*;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
@@ -13,9 +10,12 @@ import net.minecraft.registry.tag.TagKey;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.shape.VoxelShape;
+import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 
 public class CloudBlock extends Block {
+    protected static final VoxelShape COLLISION_SHAPE = Block.createCuboidShape(0, 0, 0, 16.0, 14.0, 16.0);
     public static final AbstractBlock.Settings CLOUD_SETTINGS = AbstractBlock.Settings.create().nonOpaque().mapColor(MapColor.WHITE).strength(0.1F, 0.1F).sounds(BlockSoundGroup.SNOW);
 
     public static final String CLOUD_ID = "cloud";
@@ -44,5 +44,17 @@ public class CloudBlock extends Block {
     @Override
     protected boolean isTransparent(BlockState state, BlockView world, BlockPos pos) {
         return true;
+    }
+
+    protected VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+        return COLLISION_SHAPE;
+    }
+
+    protected VoxelShape getSidesShape(BlockState state, BlockView world, BlockPos pos) {
+        return VoxelShapes.fullCube();
+    }
+
+    protected VoxelShape getCameraCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+        return VoxelShapes.fullCube();
     }
 }
