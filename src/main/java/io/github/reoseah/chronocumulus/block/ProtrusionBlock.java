@@ -48,9 +48,4 @@ public class ProtrusionBlock extends Block {
     protected float getAmbientOcclusionLightLevel(BlockState state, BlockView world, BlockPos pos) {
         return 1F;
     }
-
-    @Override
-    protected boolean isTransparent(BlockState state, BlockView world, BlockPos pos) {
-        return true;
-    }
 }

@@ -1,9 +1,9 @@
 {
   "itemGroup.chronocumulus": "Chronocumulus",
-  "block.chronocumulus.cloud": "Chronocumulus Cloud",
-  "block.chronocumulus.smooth_cloud": "Chronocumulus Cloud Cube",
-  "block.chronocumulus.cloud_bricks": "Chronocumulus Cloud Bricks",
-  "block.chronocumulus.cloud_protrusion": "Chronocumulus Cloud Protrusion",
-  "block.chronocumulus.cloud_wall_protrusion": "Chronocumulus Cloud Protrusion (Wall)",
-  "block.chronocumulus.cloud_puff": "Cronocumulus Cloud Puff"
+  "block.chronocumulus.cloud": "Solid Cloud",
+  "block.chronocumulus.smooth_cloud": "Block of Solid Cloud",
+  "block.chronocumulus.cloud_bricks": "Solid Cloud Bricks",
+  "block.chronocumulus.cloud_protrusion": "Cloud Protrusion",
+  "block.chronocumulus.cloud_wall_protrusion": "Cloud Protrusion (Wall)",
+  "block.chronocumulus.cloud_puff": "Cloud Puff"
 }
