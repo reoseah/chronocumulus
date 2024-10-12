@@ -3,5 +3,7 @@
   "block.chronocumulus.cloud": "Chronocumulus Cloud",
   "block.chronocumulus.smooth_cloud": "Chronocumulus Cloud Cube",
   "block.chronocumulus.cloud_bricks": "Chronocumulus Cloud Bricks",
-  "block.chronocumulus.cloud_protrusion": "Chronocumulus Cloud Protrusion"
+  "block.chronocumulus.cloud_protrusion": "Chronocumulus Cloud Protrusion",
+  "block.chronocumulus.cloud_wall_protrusion": "Chronocumulus Cloud Protrusion (Wall)",
+  "block.chronocumulus.cloud_puff": "Cronocumulus Cloud Puff"
 }

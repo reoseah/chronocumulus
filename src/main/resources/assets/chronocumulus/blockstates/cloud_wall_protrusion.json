@@ -1,0 +1,23 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "chronocumulus:block/cloud_protrusion",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north": {
+      "model": "chronocumulus:block/cloud_protrusion",
+      "x": 90
+    },
+    "facing=south": {
+      "model": "chronocumulus:block/cloud_protrusion",
+      "x": 90,
+      "y": 180
+    },
+    "facing=west": {
+      "model": "chronocumulus:block/cloud_protrusion",
+      "x": 90,
+      "y": 270
+    }
+  }
+}

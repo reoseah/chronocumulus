@@ -1,5 +1,5 @@
 {
-  "parent": "minecraft:block/cube_all",
+  "parent": "chronocumulus:block/cube_all_no_shading",
   "textures": {
     "all": "chronocumulus:block/smooth_cloud"
   }

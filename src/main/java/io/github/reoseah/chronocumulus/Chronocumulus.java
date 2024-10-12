@@ -1,7 +1,9 @@
 package io.github.reoseah.chronocumulus;
 
-import io.github.reoseah.chronocumulus.cloud.CloudBlock;
-import io.github.reoseah.chronocumulus.cloud.ProtrusionBlock;
+import io.github.reoseah.chronocumulus.block.CloudBlock;
+import io.github.reoseah.chronocumulus.block.PuffBlock;
+import io.github.reoseah.chronocumulus.block.WallProtrusionBlock;
+import io.github.reoseah.chronocumulus.block.ProtrusionBlock;
 import net.fabricmc.api.ModInitializer;
 
 import net.minecraft.registry.Registries;
@@ -23,10 +25,13 @@ public class Chronocumulus implements ModInitializer {
 		Registry.register(Registries.BLOCK, Identifier.of(MOD_ID, CloudBlock.SMOOTH_ID), CloudBlock.SMOOTH_BLOCK);
 		Registry.register(Registries.BLOCK, Identifier.of(MOD_ID, CloudBlock.BRICKS_ID), CloudBlock.BRICKS_BLOCK);
 		Registry.register(Registries.BLOCK, Identifier.of(MOD_ID, ProtrusionBlock.ID), ProtrusionBlock.INSTANCE);
+		Registry.register(Registries.BLOCK, Identifier.of(MOD_ID, WallProtrusionBlock.ID), WallProtrusionBlock.INSTANCE);
+		Registry.register(Registries.BLOCK, Identifier.of(MOD_ID, PuffBlock.ID), PuffBlock.INSTANCE);
 
 		Registry.register(Registries.ITEM, Identifier.of(MOD_ID, CloudBlock.CLOUD_ID), CloudBlock.CLOUD_ITEM);
 		Registry.register(Registries.ITEM, Identifier.of(MOD_ID, CloudBlock.SMOOTH_ID), CloudBlock.SMOOTH_ITEM);
 		Registry.register(Registries.ITEM, Identifier.of(MOD_ID, CloudBlock.BRICKS_ID), CloudBlock.BRICKS_ITEM);
 		Registry.register(Registries.ITEM, Identifier.of(MOD_ID, ProtrusionBlock.ID), ProtrusionBlock.ITEM);
+		Registry.register(Registries.ITEM, Identifier.of(MOD_ID, PuffBlock.ID), PuffBlock.ITEM);
 	}
 }

@@ -1,0 +1,40 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "chronocumulus:block/cloud_puff"
+      },
+      {
+        "model": "chronocumulus:block/cloud_puff",
+        "y": 90
+      },
+      {
+        "model": "chronocumulus:block/cloud_puff",
+        "y": 180
+      },
+      {
+        "model": "chronocumulus:block/cloud_puff",
+        "y": 270
+      },
+      {
+        "model": "chronocumulus:block/cloud_puff",
+        "x": 180
+      },
+      {
+        "model": "chronocumulus:block/cloud_puff",
+        "x": 180,
+        "y": 90
+      },
+      {
+        "model": "chronocumulus:block/cloud_puff",
+        "x": 180,
+        "y": 180
+      },
+      {
+        "model": "chronocumulus:block/cloud_puff",
+        "x": 180,
+        "y": 270
+      }
+    ]
+  }
+}
