@@ -1,0 +1,7 @@
+{
+  "type": "chronocumulus:chronocumulus",
+  "biomes": "#chronocumulus:has_structure/chronocumulus",
+  "step": "surface_structures",
+  "spawn_overrides": {},
+  "terrain_adaptation": "none"
+}

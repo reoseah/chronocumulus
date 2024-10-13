@@ -12,8 +12,7 @@
         "west":  { "texture": "#west", "cullface": "west" },
         "east":  { "texture": "#east", "cullface": "east" }
       },
-      "shade": false,
-      "ambientocclusion": false
+      "shade": false
     }
   ]
 }

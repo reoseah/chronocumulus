@@ -15,8 +15,9 @@ import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
 
 public class ProtrusionBlock extends Block {
+    public static final VoxelShape SHAPE = Block.createCuboidShape(1, 0, 1, 15, 4, 15);
+
     public static final String ID = "cloud_protrusion";
-    public static final VoxelShape SHAPE = Block.createCuboidShape(1.0, 0.0, 1.0, 15.0, 8.0, 15.0);
     public static final AbstractBlock.Settings SETTINGS = AbstractBlock.Settings.create().noCollision().breakInstantly().offset(OffsetType.XZ).pistonBehavior(PistonBehavior.DESTROY).replaceable();
     public static final Block INSTANCE = new ProtrusionBlock(SETTINGS);
     public static final Item ITEM = new VerticallyAttachableBlockItem(INSTANCE, WallProtrusionBlock.INSTANCE, new Item.Settings(), Direction.DOWN);

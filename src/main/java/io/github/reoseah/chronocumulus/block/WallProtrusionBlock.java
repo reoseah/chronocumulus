@@ -22,10 +22,10 @@ import java.util.Map;
 public class WallProtrusionBlock extends Block {
     public static final EnumProperty<Direction> FACING = HorizontalFacingBlock.FACING;
     public static final Map<Direction, VoxelShape> BOUNDING_SHAPES = Maps.newEnumMap(ImmutableMap.of( //
-            Direction.NORTH, Block.createCuboidShape(1, 1, 8, 15, 15, 16.0), //
-            Direction.SOUTH, Block.createCuboidShape(1, 1, 0.0, 15, 15, 8), //
-            Direction.WEST, Block.createCuboidShape(8, 1, 1, 16.0, 15, 15), //
-            Direction.EAST, Block.createCuboidShape(0.0, 1, 15, 8, 15, 15))); //
+            Direction.NORTH, Block.createCuboidShape(1, 1, 12, 15, 15, 16), //
+            Direction.SOUTH, Block.createCuboidShape(1, 1, 0, 15, 15, 4), //
+            Direction.WEST, Block.createCuboidShape(12, 1, 1, 16, 15, 15), //
+            Direction.EAST, Block.createCuboidShape(0, 1, 15, 4, 15, 15))); //
 
     public static final String ID = "cloud_wall_protrusion";
     public static final AbstractBlock.Settings SETTINGS = AbstractBlock.Settings.create().noCollision().breakInstantly().pistonBehavior(PistonBehavior.DESTROY).replaceable();

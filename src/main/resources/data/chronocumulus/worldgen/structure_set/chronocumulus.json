@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "chronocumulus:chronocumulus",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 468495437,
+    "spacing": 8,
+    "separation": 2
+  }
+}
