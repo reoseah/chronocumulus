@@ -1,7 +1,7 @@
 package io.github.reoseah.chronocumulus.structure;
 
 import io.github.reoseah.chronocumulus.structure.util.BoxAabbTree;
-import io.github.reoseah.chronocumulus.structure.util.DensityFunction;
+import io.github.reoseah.chronocumulus.structure.util.BoundedDensityFunction;
 import net.minecraft.block.Blocks;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtElement;
@@ -20,9 +20,9 @@ import net.minecraft.world.gen.StructureAccessor;
 import net.minecraft.world.gen.chunk.ChunkGenerator;
 
 public abstract class DensityHandlingPiece extends StructurePiece {
-    protected final BoxAabbTree<DensityFunction> densityFunctions;
+    protected final BoxAabbTree<BoundedDensityFunction> densityFunctions;
 
-    protected DensityHandlingPiece(StructurePieceType type, int genDepth, BoxAabbTree<DensityFunction> densityFunctions) {
+    protected DensityHandlingPiece(StructurePieceType type, int genDepth, BoxAabbTree<BoundedDensityFunction> densityFunctions) {
         super(type, genDepth, densityFunctions.getBoundingBlockBox());
         this.setOrientation(null);
         this.densityFunctions = densityFunctions;
@@ -33,13 +33,13 @@ public abstract class DensityHandlingPiece extends StructurePiece {
         this.densityFunctions = readDensityFunctions(data.getList("density_functions", NbtElement.COMPOUND_TYPE));
     }
 
-    private static BoxAabbTree<DensityFunction> readDensityFunctions(NbtList data) {
-        var densityFunctions = new BoxAabbTree<>(DensityFunction.fromNbt(data.getCompound(0)));
+    private static BoxAabbTree<BoundedDensityFunction> readDensityFunctions(NbtList data) {
+        var densityFunctions = new BoxAabbTree<>(BoundedDensityFunction.fromNbt(data.getCompound(0)));
         if (data.size() == 1) {
             return densityFunctions;
         }
         for (int i = 1; i < data.size(); i++) {
-            densityFunctions.add(DensityFunction.fromNbt(data.getCompound(i)));
+            densityFunctions.add(BoundedDensityFunction.fromNbt(data.getCompound(i)));
         }
         return densityFunctions;
     }
@@ -49,7 +49,7 @@ public abstract class DensityHandlingPiece extends StructurePiece {
         nbt.put("density_functions", writeDensityFunctions(this.densityFunctions));
     }
 
-    private static NbtList writeDensityFunctions(BoxAabbTree<DensityFunction> densityFunctions) {
+    private static NbtList writeDensityFunctions(BoxAabbTree<BoundedDensityFunction> densityFunctions) {
         var data = new NbtList();
         for (var element : densityFunctions.getObjects()) {
             data.add(element.toNbt());
@@ -69,12 +69,13 @@ public abstract class DensityHandlingPiece extends StructurePiece {
         int maxZ = Math.min(this.boundingBox.getMaxZ(), chunkBox.getMaxZ());
 
         var functions = this.densityFunctions.intersectingObjects(Box.from(chunkBox));
+
         for (int x = minX; x <= maxX; x++) {
             for (int y = minY; y <= maxY; y++) {
                 for (int z = minZ; z <= maxZ; z++) {
                     double density = 0;
                     for (var function : functions) {
-                        double value = function.getWeight(x, y, z);
+                        double value = function.getDensity(x + .5, y + .5, z + .5);
                         density = (density + value) / (1 + Math.abs(density * value));
                     }
                     if (density > .5) {

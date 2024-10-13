@@ -4,7 +4,7 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
 
-public class CylinderWithFalloff implements DensityFunction {
+public class CylinderWithFalloff implements BoundedDensityFunction {
     public final Vec3d center;
     public final double value, radius, halfHeight, horizontalFalloffDistance, verticalFalloffDistance;
 
@@ -18,7 +18,7 @@ public class CylinderWithFalloff implements DensityFunction {
     }
 
     @Override
-    public double getWeight(int x, int y, int z) {
+    public double getDensity(double x, double y, double z) {
         var point = new Vec3d(x, y, z).subtract(this.center);
         var radialDistance = point.horizontalLength();
         var verticalDistance = Math.abs(point.y);
