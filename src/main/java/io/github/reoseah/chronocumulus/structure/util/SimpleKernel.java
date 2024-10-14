@@ -10,7 +10,7 @@ public class SimpleKernel implements BoundedDensityFunction {
     public final double radius, amplitude;
 
     public SimpleKernel(BlockPos origin, Vec3d normal, double radius, double amplitude) {
-        this(Vec3d.ofCenter(origin), normal, radius, amplitude);
+        this(Vec3d.of(origin), normal, radius, amplitude);
     }
 
     public SimpleKernel(Vec3d origin, Vec3d normal, double radius, double amplitude) {

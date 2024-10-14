@@ -1,7 +1,6 @@
 package io.github.reoseah.chronocumulus.structure;
 
 import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.structure.StructurePiece;
@@ -36,7 +35,7 @@ public class ChronocumulusStructure extends Structure {
         BlockPos pos = chunk.getBlockPos(0, context.chunkGenerator().getMinimumY() + context.chunkGenerator().getWorldHeight() - 20, 0);
 
         return Optional.of(new StructurePosition(pos, Either.left(builder -> {
-            StructurePiece start = new TestCloudPiece(0, pos, random.split());
+            StructurePiece start = new WitcheryChronocloudPiece(0, pos, random.split());
             builder.addPiece(start);
             start.fillOpenings(start, builder, random.split());
         })));

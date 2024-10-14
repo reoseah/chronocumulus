@@ -3,10 +3,9 @@ package io.github.reoseah.chronocumulus.structure;
 import io.github.reoseah.chronocumulus.block.CloudBlock;
 import io.github.reoseah.chronocumulus.block.ProtrusionBlock;
 import io.github.reoseah.chronocumulus.block.PuffBlock;
+import io.github.reoseah.chronocumulus.structure.util.BoundedDensityFunction;
 import io.github.reoseah.chronocumulus.structure.util.BoxAabbTree;
 import io.github.reoseah.chronocumulus.structure.util.CylinderWithFalloff;
-import io.github.reoseah.chronocumulus.structure.util.BoundedDensityFunction;
-import io.github.reoseah.chronocumulus.structure.util.SimpleKernel;
 import net.minecraft.block.BlockState;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.structure.StructureContext;
@@ -19,27 +18,24 @@ import net.minecraft.world.gen.StructureAccessor;
 import net.minecraft.world.gen.chunk.ChunkGenerator;
 import org.joml.SimplexNoise;
 
-public class TestCloudPiece extends DensityHandlingPiece {
-    public static final StructurePieceType TYPE = TestCloudPiece::new;
+public class GenericChronocloudPiece extends DensityHandlingPiece {
+    public static final StructurePieceType TYPE = GenericChronocloudPiece::new;
 
-    private static final BlockState CLOUD = CloudBlock.CLOUD_BLOCK.getDefaultState();
-    private static final BlockState PUFF = PuffBlock.INSTANCE.getDefaultState();
-    private static final BlockState PROTRUSION = ProtrusionBlock.INSTANCE.getDefaultState();
+    protected static final BlockState CLOUD = CloudBlock.CLOUD_BLOCK.getDefaultState();
+    protected static final BlockState PUFF = PuffBlock.INSTANCE.getDefaultState();
+    protected static final BlockState PROTRUSION = ProtrusionBlock.INSTANCE.getDefaultState();
 
-    protected final int seed;
-
-    public TestCloudPiece(int generation, BlockPos pos, Random random) {
-        super(TYPE, generation, createDensityFunctions(pos, random));
-        this.seed = random.nextInt();
+    public GenericChronocloudPiece(int generation, BlockPos pos, Random random) {
+        super(TYPE, generation, createDensityFunctions(pos, random, 20));
     }
 
     protected static final double GOLDEN_ANGLE = 2 * Math.PI * (1 - 0.618_033_988_749_894);
 
-    private static BoxAabbTree<BoundedDensityFunction> createDensityFunctions(BlockPos pos, Random random) {
-        var main = new CylinderWithFalloff(Vec3d.ofCenter(pos), .5, 2, 1, 4, 1);
+    protected static BoxAabbTree<BoundedDensityFunction> createDensityFunctions(BlockPos pos, Random random, int size) {
+        var main = new CylinderWithFalloff(Vec3d.of(pos), .5, 2, 1, 4, 1);
         var tree = new BoxAabbTree<BoundedDensityFunction>(main);
 
-        for (int i = 1; i < 20; i++) {
+        for (int i = 1; i < size; i++) {
             double angle = i * GOLDEN_ANGLE;
             double distance = Math.sqrt(i) * 4;
 
@@ -59,15 +55,16 @@ public class TestCloudPiece extends DensityHandlingPiece {
         return tree;
     }
 
-    public TestCloudPiece(StructureContext context, NbtCompound data) {
-        super(TYPE, context, data);
-        this.seed = data.getInt("seed");
+    protected GenericChronocloudPiece(StructurePieceType type, int genDepth, BoxAabbTree<BoundedDensityFunction> densityFunctions) {
+        super(type, genDepth, densityFunctions);
     }
 
-    @Override
-    protected void writeNbt(StructureContext context, NbtCompound data) {
-        super.writeNbt(context, data);
-        data.putInt("seed", this.seed);
+    public GenericChronocloudPiece(StructureContext context, NbtCompound data) {
+        super(TYPE, context, data);
+    }
+
+    protected GenericChronocloudPiece(StructurePieceType type, StructureContext context, NbtCompound data) {
+        super(type, context, data);
     }
 
     @Override
